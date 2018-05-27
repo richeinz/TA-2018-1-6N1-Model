@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.ForeignKey;
+import javax.persistence.ForeignKey;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -68,8 +68,7 @@ public class Usuario implements Serializable{
     
     @ManyToOne
     @NotNull(message = "O setor deve ser informado")
-    @JoinColumn(name = "setor", referencedColumnName = "id",  nullable = false)
-    @ForeignKey(name = "fK_setor_id")
+    @JoinColumn(name = "setor", referencedColumnName = "id",  nullable = false, foreignKey = @ForeignKey(name = "fK_setor_id"))
     private Setor setor;
     
     @ManyToMany(fetch = FetchType.LAZY)

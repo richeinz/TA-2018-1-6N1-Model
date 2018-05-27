@@ -48,18 +48,11 @@ public class TestePersistirProjeto {
         boolean exception = false;
         try {
             Projeto p = new Projeto();
-            /*
-            Colaborador c = em.find(Colaborador.class, 1);
-            Colaborador c1 = em.find(Colaborador.class, 1);
-            Colaborador c2 = em.find(Colaborador.class, 1);
-            p.getListaColaboradores().add(c);
-            p.getListaColaboradores().add(c1);
-            p.getListaColaboradores().add(c2);*/
             p.setAtivo(true);
-            p.setDescricao("Projeto lixo do futuro - Recilagem");
+            p.setDescricao("Projeto qualquer");
             p.setFim(Calendar.getInstance());
             p.setInicio(Calendar.getInstance());
-            p.setNome("Projeto lixo do futuro - Recilagem");
+            p.setNome("Projeto qualquer");
             p.setSetor(em.find(Setor.class, 1));
             
             em.getTransaction().begin();

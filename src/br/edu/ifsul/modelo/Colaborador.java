@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.ForeignKey;
+import javax.persistence.ForeignKey;
 
 /**
  *
@@ -36,14 +36,12 @@ public class Colaborador implements Serializable {
     
     @ManyToOne
     @NotNull(message = "O usuario deve ser informado")
-    @JoinColumn(name = "usuario", referencedColumnName = "id",  nullable = false)
-    @ForeignKey(name = "fK_usuario_id")
+    @JoinColumn(name = "usuario", referencedColumnName = "id",  nullable = false, foreignKey = @ForeignKey(name = "fK_usuario_id"))
     private Usuario usuario;
     
     @ManyToOne
-    @JoinColumn(name = "colaborador_id", referencedColumnName = "id", nullable = false)
-    @ForeignKey(name = "fk_colaborador_id")
-    private Colaborador colaborador;
+    @JoinColumn(name = "projeto", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "fk_colaborador_id"))
+    private Projeto projeto;
 
     public Colaborador() {
 
@@ -80,6 +78,14 @@ public class Colaborador implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
+    public Projeto getProjeto() {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
 
     @Override
     public int hashCode() {
@@ -106,13 +112,6 @@ public class Colaborador implements Serializable {
         return true;
     }
 
-    public Colaborador getColaborador() {
-        return colaborador;
-    }
-
-    public void setColaborador(Colaborador colaborador) {
-        this.colaborador = colaborador;
-    }
 
     
 }

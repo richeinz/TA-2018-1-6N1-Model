@@ -18,12 +18,14 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "permissao")
 public class Permissao implements Serializable {
+    
     @Id
     @NotBlank(message = "O nome não pode ser em branco")
     @NotNull(message = "O nome não pode ser nulo")
     @Length(max = 30, message = "O nome não pode ter mais de {max} caracteres")
     @Column(name = "nome", length = 30, nullable = false)
     private String nome;
+    
     @NotBlank(message = "A descrição não pode ser em branco")
     @NotNull(message = "A descrição não pode ser nula")
     @Length(max = 40, message = "A descrição não pode ter mais de {max} caracteres")    

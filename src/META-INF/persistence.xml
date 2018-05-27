@@ -3,6 +3,10 @@
   <persistence-unit name="TA-2018-1-6N1-ModelPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.edu.ifsul.modelo.Setor</class>
+    <class>br.edu.ifsul.modelo.Colaborador</class>
+    <class>br.edu.ifsul.modelo.Permissao</class>
+    <class>br.edu.ifsul.modelo.Projeto</class>
+    <class>br.edu.ifsul.modelo.Usuario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/TA-2018-1-6N1"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
