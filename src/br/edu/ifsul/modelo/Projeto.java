@@ -130,6 +130,11 @@ public class Projeto implements Serializable {
     public void setListaColaboradores(List<Colaborador> listaColaboradores) {
         this.listaColaboradores = listaColaboradores;
     }
+    
+    public void adicionaColaborador(Colaborador obj){
+        obj.setProjeto(this);
+        this.listaColaboradores.add(obj);
+    }
 
     @Override
     public int hashCode() {

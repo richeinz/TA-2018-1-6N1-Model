@@ -5,6 +5,7 @@
  */
 package br.edu.ifsul.testes;
 
+import br.edu.ifsul.modelo.Permissao;
 import br.edu.ifsul.modelo.Setor;
 import br.edu.ifsul.modelo.Usuario;
 import java.util.Calendar;
@@ -45,15 +46,19 @@ public class TestePersistirUsuario {
     public void teste(){
         boolean exception = false;
         try {
-            Usuario u = new Usuario();
-            u.setNome("Antonio Pedro Bordin");
-            u.setEmail("antonio.bordin@usuario.com");
-            u.setNascimento(Calendar.getInstance());
-            u.setSenha("1234");
-            u.setUsuario("antonio.bordin");
-            u.setSetor(em.find(Setor.class, 1));
-            em.getTransaction().begin();
-            em.persist(u);
+           em.getTransaction().begin();
+            Usuario obj = new Usuario();
+            obj.setEmail("jorge.bavaresco@passofundo.ifsul.edu.br");
+            obj.setNascimento(Calendar.getInstance());
+            obj.setNome("Jorge");
+            obj.setSenha("123456");
+            obj.setSetor(em.find(Setor.class, 1));
+            obj.setUsuario("jorgebb");
+            Permissao p = em.find(Permissao.class, "ADMINISTRADOR");
+            Permissao p1 = em.find(Permissao.class, "USUARIO");
+            obj.getPermissoes().add(p);
+            obj.getPermissoes().add(p1);
+            em.persist(obj);
             em.getTransaction().commit();
         } catch(Exception e){
             exception = true;
